@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const template = <p>Hello World!</p>
+import ToDoApp from './components/ToDoApp.jsx'
 
-ReactDOM.render(template, document.getElementById('app'));
+ReactDOM.render(<ToDoApp />, document.getElementById('app'));
