@@ -6,15 +6,23 @@ export default class AddTask extends React.Component {
 
         this.state = {
 
-        }
+        };
+
+        this.handleAddTask = this.handleAddTask.bind(this);
     }
 
-    render(props){
+    handleAddTask(event){
+        event.preventDefault();
+        const task = event.target.elements.task.value.trim();
+        this.props.addTask(task);
+    }
+
+    render(){
         return(
-            <div>
-                <input type="text" placeholder="Add a task"/>
-                <button type="submit">Add Task</button>
-            </div>
-        )
+            <form onSubmit={this.handleAddTask}>
+				<input type="text" name="task" placeholder="Add a task"/>
+				<button >Add Task</button>
+			</form>
+        );
     }
 }

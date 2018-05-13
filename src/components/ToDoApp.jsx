@@ -1,23 +1,33 @@
 import React from 'react';
 
-import AddTask from './AddTask';
 import Header from './Header';
-import TaskList from './TaskList';
+import TasksContainer from './TasksContainer';
 
 export default class ToDoApp extends React.Component {
 	constructor(props){
 		super(props);
+
 		this.state = {
-			tasks:["task 1", "task 2", "task 3"]
-		}
+			tasks:['task 1', 'task 2', 'task 3']
+		};
+
+		this.addTask = this.addTask.bind(this);
+	}
+
+	addTask(task){
+		this.setState((prevState)=>({
+			tasks: prevState.tasks.concat(task)
+		}));
 	}
 	
 	render(){
 		return(
 			<div>
 				<Header />
-				<AddTask />
-				<TaskList tasks={this.state.tasks}/>
+				<TasksContainer 
+					tasks={this.state.tasks}
+					addTask={this.addTask}
+				/>
 			</div>
 		);
 	}

@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Task = (props) => (
-    <p>{props.task}</p>
+    <div>
+        {props.task} <button>Remove Task</button>
+    </div>
 );
 
 export default Task;
