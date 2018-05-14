@@ -14,6 +14,29 @@ export default class ToDoApp extends React.Component {
 		this.addTask = this.addTask.bind(this);
 	}
 
+	componentDidMount(){
+		try{
+			const json = localStorage.getItem('tasks');
+			const tasks = JSON.parse(json);
+
+			if(tasks){
+				this.setState(()=>({ tasks }));
+			}
+		}catch(e){
+			// error
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState){
+		if(prevState.tasks.length !== this.state.tasks.length){
+			const json = JSON.stringify(this.state.tasks);
+			localStorage.setItem('tasks', json);
+		}
+	}
+
+
+
+	// App Functions
 	addTask(task){
 		this.setState((prevState)=>({
 			tasks: prevState.tasks.concat(task)
