@@ -12,6 +12,7 @@ export default class ToDoApp extends React.Component {
 		};
 
 		this.addTask = this.addTask.bind(this);
+		this.removeTask = this.removeTask.bind(this);
 	}
 
 	componentDidMount(){
@@ -42,6 +43,12 @@ export default class ToDoApp extends React.Component {
 			tasks: prevState.tasks.concat(task)
 		}));
 	}
+
+	removeTask(taskToRemove){
+		this.setState((prevState)=>({
+			tasks: prevState.tasks.filter((task)=> taskToRemove !== task)
+		}));
+	}
 	
 	render(){
 		return(
@@ -50,6 +57,7 @@ export default class ToDoApp extends React.Component {
 				<TasksContainer 
 					tasks={this.state.tasks}
 					addTask={this.addTask}
+					removeTask={this.removeTask}
 				/>
 			</div>
 		);
