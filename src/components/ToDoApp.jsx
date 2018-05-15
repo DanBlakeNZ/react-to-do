@@ -40,6 +40,12 @@ export default class ToDoApp extends React.Component {
 
 	// App Functions
 	addTask(task){
+		if(!task){
+			return 'Enter valid value to add item';
+		}else if(this.state.tasks.indexOf(task) > -1){
+			return 'This option already exists';
+		}
+
 		this.setState((prevState)=>({
 			tasks: prevState.tasks.concat(task)
 		}));
