@@ -7,8 +7,9 @@ const TasksContainer = (props) => (
     <div>
         <AddTask addTask={ props.addTask } />
         <TaskList 
-            tasks={ props.tasks }
-            removeTask={ props.removeTask } />
+            tasks={props.tasks}
+            removeTask={props.removeTask}
+            removeAllTasks={props.removeAllTasks} />
     </div>
 );
 

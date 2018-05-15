@@ -8,11 +8,12 @@ export default class ToDoApp extends React.Component {
 		super(props);
 
 		this.state = {
-			tasks:['task 1', 'task 2', 'task 3']
+			tasks:[]
 		};
 
 		this.addTask = this.addTask.bind(this);
 		this.removeTask = this.removeTask.bind(this);
+		this.removeAllTasks = this.removeAllTasks.bind(this);
 	}
 
 	componentDidMount(){
@@ -49,6 +50,12 @@ export default class ToDoApp extends React.Component {
 			tasks: prevState.tasks.filter((task)=> taskToRemove !== task)
 		}));
 	}
+
+	removeAllTasks(){
+		this.setState(()=>({
+			tasks: []
+		}));
+	}
 	
 	render(){
 		return(
@@ -58,6 +65,7 @@ export default class ToDoApp extends React.Component {
 					tasks={this.state.tasks}
 					addTask={this.addTask}
 					removeTask={this.removeTask}
+					removeAllTasks={this.removeAllTasks}
 				/>
 			</div>
 		);
