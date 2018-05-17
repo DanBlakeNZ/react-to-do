@@ -24,7 +24,7 @@ export default class AddTask extends React.Component {
     }
 
     render(){
-        return(<div>
+        return(<div className="add-task">
             {this.state.error && <p>{this.state.error}</p>}
             <form onSubmit={this.handleAddTask}>
 				<input type="text" name="task" placeholder="Add a task"/>
